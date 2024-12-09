@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/ProductCard.css";
+import cartIcon from "../../assets/icons/cart-icon.png";
 
 const ProductCard = ({ product }) => {
     return (
@@ -10,7 +11,7 @@ const ProductCard = ({ product }) => {
 
             <div className="product-card-actions">
                 <button className="btn btn-cart">
-                    <img src="/assets/icons/cart-icon.png" alt="Add to Cart" className="btn-icon" />
+                    <img src={cartIcon} alt="Add to Cart" className="btn-icon" />
                     Add to Cart
                 </button>
             </div>
