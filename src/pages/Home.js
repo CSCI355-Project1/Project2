@@ -31,10 +31,14 @@ const Home = () => {
         <div>
             <header className="hero">
                 <div className="hero-content">
-                    <h1>Message</h1>
-                    <div className="cta-button">
-                        <Link to="/events" className="btn btn-event">Explore Events</Link>
-                        <Link to="/marketplace" className="btn btn-marketplace">Visit Marketplace</Link>
+                    <h1>Connect</h1>
+                    <div className="cta-buttons">
+                        <div className="cta-event">
+                            <Link to="/events" className="btn btn-event">Explore Events</Link>
+                        </div>
+                        <div className="cta-marketplace">
+                            <Link to="/marketplace" className="btn btn-marketplace">Visit Marketplace</Link>
+                        </div>
                     </div>
                 </div>
             </header>
