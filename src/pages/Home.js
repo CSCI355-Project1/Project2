@@ -5,6 +5,7 @@ import ProductCard from '../components/marketplace/ProductCard';
 import product1 from "../assets/products/product1.jpg";
 import product2 from "../assets/products/product2.jpg";
 import product3 from "../assets/products/product3.jpg";
+import videoFile from '../assets/videos/heroVideo.mp4';
 
 const Home = () => {
     const popularProducts = [
@@ -30,6 +31,10 @@ const Home = () => {
     return (
         <div>
             <header className="hero">
+                <video className="hero-video" autoPlay muted loop playsInline>
+                    <source src={videoFile} type="video/mp4" />
+                    Your browser does not support the video tag
+                </video>
                 <div className="hero-content">
                     <h1>Connect</h1>
                     <div className="cta-buttons">
