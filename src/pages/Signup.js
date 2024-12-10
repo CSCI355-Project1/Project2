@@ -1,13 +1,13 @@
 import React from 'react';
-import LoginComponent from '../components/authentication/LoginComponent';
+import SignupComponent from '../components/authentication/SignupComponent';
 import { AuthProvider } from '../context/AuthContext';
 
-const Login = () => {
+const Signup = () => {
     return (
         <AuthProvider>
-            <LoginComponent />
+            <SignupComponent />
         </AuthProvider>
     )
 };
 
-export default Login;
+export default Signup;

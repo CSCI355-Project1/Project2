@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/PlaceHolderLogo.png"
+import { useAuth } from "../../context/AuthContext"
 import "../../styles/Navbar.css";
+import logo from "../../assets/images/PlaceHolderLogo.png";
+import profileIcon from "../../assets/icons/profile-icon.png";
 import cartIcon from "../../assets/icons/cart-icon.png";
 
 const Navbar = () => {
+    const { currentUser } = useAuth();
 
     const cartItemCount = 3; //REPLACE THIS LATER WITH LOGIC THIS IS A PLACEHOLDER
 
@@ -22,7 +25,13 @@ const Navbar = () => {
                 <li><Link to="/marketplace">Marketplace</Link></li>
             </ul>
             <div className="navbar-actions">
-                <Link to="/login" className="btn login">Login</Link>
+                {!currentUser.email ? (
+                    <Link to="/login" className="btn login">Login</Link>
+                ) : (
+                    <Link to="/profile" className="btn profile">
+                        <img src={profileIcon} alt="Profile" className="btn-icon" />
+                    </Link>
+                )}
                 <Link to="/create-event" className="btn create-event">+ Create Event</Link>
                 <Link to="/cart" className="btn cart">
                     <img src={cartIcon} alt="Add to Cart" className="btn-icon" />
