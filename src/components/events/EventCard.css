@@ -1,28 +1,43 @@
 .event-card {
-    background-color: #ffffff; /* White background for the card */
-    border: 1px solid #e0e0e0; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 300px; /* Consistent height */
-  }
-  
-  .event-card h2 {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  .event-card p {
-    margin: 8px 0;
-    color: #666;
-  }
-  
-  .event-card span {
-    font-weight: bold;
-    color: #444;
-  }
-  
+  background-color: #ffffff;
+  /* White background for the card */
+  border: 1px solid #e0e0e0;
+  /* Light border */
+  border-radius: 8px;
+  /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  /* Consistent height */
+  width: 250px;
+}
+
+.event-card h2 {
+  font-size: 20px;
+  color: #333;
+}
+
+.event-card p {
+  margin: 8px 0;
+  color: #666;
+}
+
+.event-card span {
+  font-weight: bold;
+  color: #444;
+}
+
+.event-card-image {
+  width: 250px;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  object-fit: cover;
+  margin: 0 auto 12px;
+  border-radius: 8px;
+}
