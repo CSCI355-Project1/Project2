@@ -4,7 +4,7 @@ import MapModal from "./MapModal";
 
 const EventCard = ({ event }) => {
   const { title, date, location, description, imageURL, latitude, longitude } = event;
-  const [rsvpStatus, setRsvpStatus] = useState(null);
+  const [rsvpStatus, setRsvpStatus] = useState("Undecided");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleRsvp = (status) => {
@@ -30,6 +30,7 @@ const EventCard = ({ event }) => {
 
       <div className="rsvp-section">
         <h3>RSVP</h3>
+        <p>Your Status: {rsvpStatus}</p>
         <div>
           <button onClick={() => handleRsvp("yes")} className="rsvp-yes">Yes</button>
           <button onClick={() => handleRsvp("no")} className="rsvp-no">No</button>
