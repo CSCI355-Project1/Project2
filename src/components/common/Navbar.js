@@ -25,7 +25,7 @@ const Navbar = () => {
                 <li><Link to="/marketplace">Marketplace</Link></li>
             </ul>
             <div className="navbar-actions">
-                {!currentUser.email ? (
+                {!currentUser ? (
                     <Link to="/login" className="btn login">Login</Link>
                 ) : (
                     <Link to="/profile" className="btn profile">

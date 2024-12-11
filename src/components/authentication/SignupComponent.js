@@ -51,8 +51,7 @@ const SignupComponent = () => {
                 </label>
                 <button disabled={loading} type="submit" className="btn signup">Sign Up</button>
             </form>
-            <p>Already have an account?<Link to="/login" className="btn signup-login-redirect">Login</Link>
-            </p>
+            <p>Already have an account?<Link to="/login" className="btn signup-login-redirect">Login</Link></p>
         </div>
     );
 };

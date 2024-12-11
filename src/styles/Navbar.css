@@ -65,6 +65,12 @@
     border-color: #fff;
 }
 
+.btn.profile {
+    position: relative;
+    background-color: #d4d4d4;
+    border-radius: 50%;
+}
+
 .btn.login {
     background-color: #d4d4d4;
     color: #555;

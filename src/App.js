@@ -14,7 +14,9 @@ import { AuthProvider } from "./context/AuthContext";
 function App() {
     return (
         <Router>
-            <AuthProvider><Navbar /></AuthProvider>
+            <AuthProvider>
+                <Navbar />
+            </AuthProvider>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/marketplace" element={<Marketplace />} />
