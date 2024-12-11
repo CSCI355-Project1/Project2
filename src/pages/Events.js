@@ -12,6 +12,8 @@ const Events = () => {
       location: "San Francisco, CA",
       description: "Join us for an exciting conference about emerging technologies.",
       imageURL: eventDefault,
+      latitude: 37.7749,
+      longitude: -122.4194
     },
     {
       id: 2,
@@ -20,6 +22,8 @@ const Events = () => {
       location: "Austin, TX",
       description: "Experience live performances from top artists worldwide.",
       imageURL: eventDefault,
+      latitude: 30.2672,
+      longitude: -97.7431
     },
     {
       id: 3,
@@ -28,6 +32,8 @@ const Events = () => {
       location: "New York, NY",
       description: "Learn to paint with professional artists.",
       imageURL: eventDefault,
+      latitude: 40.7128,
+      longitude: -74.0060
     },
     {
       id: 4,
@@ -36,6 +42,8 @@ const Events = () => {
       location: "New York, NY",
       description: "Come by and shop for deals!",
       imageURL: eventDefault,
+      latitude: 40.7128,
+      longitude: -74.0060
     },
     {
       id: 5,
@@ -44,6 +52,8 @@ const Events = () => {
       location: "San Francisco, CA",
       description: "Join us for an exciting conference about emerging technologies.",
       imageURL: eventDefault,
+      latitude: 37.7749,
+      longitude: -122.4194
     },
     {
       id: 6,
@@ -52,6 +62,8 @@ const Events = () => {
       location: "Austin, TX",
       description: "Experience live performances from top artists worldwide.",
       imageURL: eventDefault,
+      latitude: 30.2672,
+      longitude: -97.7431
     },
     {
       id: 7,
@@ -60,6 +72,8 @@ const Events = () => {
       location: "New York, NY",
       description: "Learn to paint with professional artists.",
       imageURL: eventDefault,
+      latitude: 40.7128,
+      longitude: -74.0060
     },
     {
       id: 8,
@@ -68,6 +82,8 @@ const Events = () => {
       location: "New York, NY",
       description: "Come by and shop for deals!",
       imageURL: eventDefault,
+      latitude: 40.7128,
+      longitude: -74.0060
     },
     {
       id: 9,
@@ -76,6 +92,8 @@ const Events = () => {
       location: "San Francisco, CA",
       description: "Join us for an exciting conference about emerging technologies.",
       imageURL: eventDefault,
+      latitude: 37.7749,
+      longitude: -122.4194
     },
     {
       id: 10,
@@ -84,6 +102,8 @@ const Events = () => {
       location: "Austin, TX",
       description: "Experience live performances from top artists worldwide.",
       imageURL: eventDefault,
+      latitude: 30.2672,
+      longitude: -97.7431
     },
     {
       id: 11,
@@ -92,6 +112,8 @@ const Events = () => {
       location: "New York, NY",
       description: "Learn to paint with professional artists.",
       imageURL: eventDefault,
+      latitude: 40.7128,
+      longitude: -74.0060
     },
     {
       id: 12,
@@ -100,6 +122,8 @@ const Events = () => {
       location: "New York, NY",
       description: "Come by and shop for deals!",
       imageURL: eventDefault,
+      latitude: 40.7128,
+      longitude: -74.0060
     },
   ];
 

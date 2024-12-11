@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import "./EventCard.css";
+import MapModal from "./MapModal";
 
 const EventCard = ({ event }) => {
-  const { title, date, location, description, imageURL } = event;
+  const { title, date, location, description, imageURL, latitude, longitude } = event;
   const [rsvpStatus, setRsvpStatus] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleRsvp = (status) => {
     setRsvpStatus(status);
     // Backend here
+  }
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   }
 
   return (
@@ -26,6 +36,19 @@ const EventCard = ({ event }) => {
           <button onClick={() => handleRsvp("maybe")} className="rsvp-maybe">Maybe</button>
         </div>
       </div>
+
+      <button onClick={openModal} className="open-modal-btn">Show more detail</button>
+
+      {isModalOpen && (
+        <MapModal
+          latitude={latitude}
+          longitude={longitude}
+          date={date}
+          location={location}
+          description={description}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };
