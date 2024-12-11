@@ -1,0 +1,19 @@
+.events-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #f5f5f5; /* Light grey background for the page */
+  }
+  
+  .events-container h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .event-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
