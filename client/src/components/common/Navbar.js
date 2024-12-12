@@ -53,7 +53,7 @@ const Navbar = () => {
             <img src={profileIcon} alt="Profile" className="btn-icon" />
           </Link>
         )}
-        <Link to="/create-event" className="btn create-event">
+        <Link to="/events" className="btn create-event">
           + Create Event
         </Link>
         <Link to="/cart" className="btn cart">

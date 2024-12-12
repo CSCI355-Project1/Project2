@@ -43,25 +43,20 @@ app.get("/config", (req, res) => {
 });
 
 app.post("/create-payment-intent", async (req, res) => {
+    const { totalPrice } = req.body;
+    console.log("Recieved totalPrice:", totalPrice);
     try {
-        const { totalPrice } = req.body;
-
         if (!totalPrice || isNaN(totalPrice)) {
             return res.status(400).send({ error: { message: "Invalid total price." } });
         }
         const paymentIntent = await stripe.paymentIntents.create({
             currency: "USD",
-            amount: totalPrice,
+            amount: Math.round(totalPrice * 100),
         });
-        res.send({
-            clientSecret: paymentIntent.client_secret,
-        });
-    } catch (e) {
-        return res.status(400).send({
-            error: {
-                message: e.message,
-            },
-        });
+        res.send({ clientSecret: paymentIntent.client_secret });
+    } catch (error) {
+        console.error("Error creating payment intent:", error);
+        return res.status(400).send({ error: { message: error.message } });
     }
 });
 

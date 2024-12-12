@@ -28,6 +28,7 @@ const CheckOut = () => {
     }, []);
 
     useEffect(() => {
+        console.log("Total Price:", totalPrice);
         fetch("/create-payment-intent", {
             method: "POST",
             body: JSON.stringify({ totalPrice }),
@@ -36,8 +37,15 @@ const CheckOut = () => {
             },
         })
             .then(async (result) => {
-                const { clientSecret } = await result.json();
-                setClientSecret(clientSecret);
+                const data = await result.json();
+                console.log(data);
+
+                if (result.ok) {
+                    setClientSecret(data.clientSecret);
+                }
+                else {
+                    console.error("Error from server: ", data);
+                }
             })
             .catch((error) => {
                 console.error("Error creating payment intent:", error);
