@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "rc-slider";
+import ProductCard from "./ProductCard";
 import "rc-slider/assets/index.css";
 import "../../styles/ProductsView.css";
 
 const ProductsView = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [maxProductPrice, setMaxProductPrice] = useState(300);
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
@@ -24,6 +26,23 @@ const ProductsView = () => {
       maxPrice: values[1],
     }));
   };
+  const fetchMaxPrice = async () => {
+    try {
+      const baseURL = "http://localhost:3005";
+      const response = await axios.get(`${baseURL}/api/products`);
+      const highest = Math.max(
+        ...response.data.map((product) => parseFloat(product.price))
+      );
+      setMaxProductPrice(highest);
+      setPriceRange([0, highest]);
+      setFilters((prev) => ({
+        ...prev,
+        maxPrice: highest,
+      }));
+    } catch (error) {
+      console.error("Error fetching max price:", error);
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -32,7 +51,8 @@ const ProductsView = () => {
 
       if (filters.status) headers.status = filters.status;
       if (filters.minPrice !== 0) headers["min-price"] = filters.minPrice;
-      if (filters.maxPrice !== 300) headers["max-price"] = filters.maxPrice;
+      if (filters.maxPrice !== maxProductPrice)
+        headers["max-price"] = filters.maxPrice;
 
       const response = await axios.get(`${baseURL}/api/products`, { headers });
       setProducts(response.data);
@@ -42,6 +62,10 @@ const ProductsView = () => {
       setError("Error loading products");
     }
   };
+
+  useEffect(() => {
+    fetchMaxPrice();
+  }, []);
 
   useEffect(() => {
     fetchProducts();
@@ -99,7 +123,10 @@ const ProductsView = () => {
 
   return (
     <div>
-      <h1>Products</h1>
+      <header className="marketplace-header">
+        <h1>Marketplace</h1>
+        <p>Buy and sell products within your community!</p>
+      </header>
 
       <div className="filters-container">
         <div className="filter-group">
@@ -125,7 +152,7 @@ const ProductsView = () => {
             <Slider
               range
               min={0}
-              max={300}
+              max={maxProductPrice}
               value={priceRange}
               onChange={handlePriceChange}
               className="price-slider"
@@ -138,84 +165,17 @@ const ProductsView = () => {
         </div>
       </div>
 
-      <div className="table-container">
+      <div className="marketplace-container">
         {error ? (
           <div className="message error">{error}</div>
         ) : products.length === 0 ? (
           <div className="message">No products found</div>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th
-                  onClick={() => handleSort("id")}
-                  style={{ cursor: "pointer" }}
-                >
-                  ID {getSortIcon("id")}
-                </th>
-                <th
-                  onClick={() => handleSort("title")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Title {getSortIcon("title")}
-                </th>
-                <th
-                  onClick={() => handleSort("description")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Description {getSortIcon("description")}
-                </th>
-                <th
-                  onClick={() => handleSort("price")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Price {getSortIcon("price")}
-                </th>
-                <th
-                  onClick={() => handleSort("status")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Status {getSortIcon("status")}
-                </th>
-                <th
-                  onClick={() => handleSort("created_by")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Sold By {getSortIcon("created_by")}
-                </th>
-                <th
-                  onClick={() => handleSort("created_at")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Created At {getSortIcon("created_at")}
-                </th>
-                <th
-                  onClick={() => handleSort("updated_at")}
-                  style={{ cursor: "pointer" }}
-                >
-                  Updated At {getSortIcon("updated_at")}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {getSortedProducts().map((product) => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.title}</td>
-                  <td className="description-cell">{product.description}</td>
-                  <td>${product.price}</td>
-                  <td>
-                    <span className={`status-${product.status.toLowerCase()}`}>
-                      {product.status}
-                    </span>
-                  </td>
-                  <td>{product.created_by}</td>
-                  <td>{new Date(product.created_at).toLocaleString()}</td>
-                  <td>{new Date(product.updated_at).toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="marketplace-grid">
+            {getSortedProducts().map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         )}
       </div>
     </div>
