@@ -6,7 +6,6 @@ import Events from "./pages/Events";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
-import CreateEvent from "./pages/CreateEvent";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/CheckOut"
 import Navbar from "./components/common/Navbar";
@@ -25,7 +24,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
