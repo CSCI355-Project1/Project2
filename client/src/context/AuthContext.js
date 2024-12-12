@@ -31,6 +31,9 @@ export const AuthProvider = ({ children }) => {
         email,
         password
       );
+      console.log(userCredential.user);
+      const idToken = await userCredential.user.uid;
+      localStorage.setItem("token", idToken);
       return userCredential;
     } catch (error) {
       throw error;
@@ -40,6 +43,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      localStorage.removeItem("token");
     } catch (error) {
       throw error;
     }
