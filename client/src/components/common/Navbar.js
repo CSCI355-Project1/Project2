@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
 import "../../styles/Navbar.css";
-import logo from "../../assets/images/PlaceHolderLogo.png";
+import logo from "../../assets/images/logo.png";
 import profileIcon from "../../assets/icons/profile-icon.png";
 import cartIcon from "../../assets/icons/cart-icon.png";
 
