@@ -1,8 +1,14 @@
 const express = require("express");
-const cors = require("cors");
+const cors = require('cors');
 const app = express();
-const port = 3005;
+const { resolve } = require("path");
+const dotenv = require("dotenv");
+const port = 3000;
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2022-08-01",
+});
 
+//app.use(cors());
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -17,7 +23,45 @@ app.use(
   })
 );
 
+dotenv.config({ path: "./.env" });
+
 app.use(express.json());
+
+app.use(express.static(process.env.STATIC_DIR));
+
+app.get("/", (req, res) => {
+    const path = resolve(process.env.STATIC_DIR + "/index.html");
+    res.sendFile(path);
+});
+
+app.get("/config", (req, res) => {
+    res.send({
+        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    });
+});
+
+app.post("/create-payment-intent", async (req, res) => {
+    try {
+        const { totalPrice } = req.body;
+
+        if (!totalPrice || isNaN(totalPrice)) {
+            return res.status(400).send({ error: { message: "Invalid total price." } });
+        }
+        const paymentIntent = await stripe.paymentIntents.create({
+            currency: "USD",
+            amount: totalPrice,
+        });
+        res.send({
+            clientSecret: paymentIntent.client_secret,
+        });
+    } catch (e) {
+        return res.status(400).send({
+            error: {
+                message: e.message,
+            },
+        });
+    }
+});
 
 const helloRoute = require("./endpoints/hello");
 // const usersRoute = require("./endpoints/users");
