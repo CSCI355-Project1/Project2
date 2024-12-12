@@ -2,21 +2,28 @@
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: #eee;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .marketplace-layout {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .content {
   flex: 1;
   min-width: 0;
+  padding: 20px;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 30px;
+  font-size: 2rem;
+  color: #333;
 }
 
 .message {

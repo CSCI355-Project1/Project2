@@ -21,6 +21,6 @@ sidebar {
 }
 
 .sidebar-item.active {
-  background-color: #007bff;
+  background: linear-gradient(-10deg, #6e7bff, #325db3);
   color: white;
 }
