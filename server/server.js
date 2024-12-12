@@ -1,29 +1,31 @@
 const express = require("express");
 const cors = require('cors');
-const app = express();
 const { resolve } = require("path");
 const dotenv = require("dotenv");
+
+dotenv.config({ path: "./.env" });
+
+const app = express();
 const port = 3000;
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
     apiVersion: "2022-08-01",
 });
 
 //app.use(cors());
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "status",
-      "max-price",
-      "min-price",
-    ],
-  })
+    cors({
+        origin: "http://localhost:3000",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: [
+            "Content-Type",
+            "Authorization",
+            "status",
+            "max-price",
+            "min-price",
+        ],
+    })
 );
-
-dotenv.config({ path: "./.env" });
 
 app.use(express.json());
 
@@ -91,5 +93,5 @@ app.use("/api/notifications/enroll", enrollNotifications);
 app.use("/api/notifications/dismiss", dismissNotification);
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
