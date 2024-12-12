@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 
 const app = express();
-const port = 3000;
+const port = 3005;
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
     apiVersion: "2022-08-01",
