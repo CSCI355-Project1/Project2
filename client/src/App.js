@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/CheckOut"
+import PaymentSuccess from "./pages/PaymentSuccess";
 import Navbar from "./components/common/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
       </Routes>
     </Router>
   );
