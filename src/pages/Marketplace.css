@@ -1,0 +1,30 @@
+/* Grid Layout */
+.marketplace-container {
+  background-color: #d1d1d1;
+  padding: 20px;
+}
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 fixed columns */
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+}
+
+.marketplace-header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #325db3; /* Facebook blue */
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.marketplace-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.marketplace-header p {
+  margin: 10px 0 0;
+  font-size: 1rem;
+}

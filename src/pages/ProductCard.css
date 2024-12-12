@@ -1,0 +1,56 @@
+.product-card {
+    background: #d6d6d6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .product-card-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .product-card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .product-card-price {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .product-card-location,
+  .product-card-miles {
+    font-size: 0.9rem;
+    color: #777;
+  }
+
+  .product-card-availability {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .in-stock {
+    color: green; /* Green for available items */
+  }
+  
+  .out-of-stock {
+    color: red; /* Red for unavailable items */
+  }
