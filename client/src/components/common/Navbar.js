@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 import "../../styles/Navbar.css";
 import logo from "../../assets/images/PlaceHolderLogo.png";
 import profileIcon from "../../assets/icons/profile-icon.png";
@@ -8,8 +9,9 @@ import cartIcon from "../../assets/icons/cart-icon.png";
 
 const Navbar = () => {
   const { currentUser } = useAuth();
+  const { cartItems } = useCart();
 
-  const cartItemCount = 3; //REPLACE THIS LATER WITH LOGIC THIS IS A PLACEHOLDER
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="navbar">
@@ -45,12 +47,13 @@ const Navbar = () => {
         </Link>
         <Link to="/cart" className="btn cart">
           <img src={cartIcon} alt="Add to Cart" className="btn-icon" />
-          {cartItemCount > 0 && (
-            <span className="cart-count">{cartItemCount}</span>
+          {totalItems > 0 && (
+            <span className="cart-count">{totalItems > 99 ? "99+" : totalItems}</span>
           )}
         </Link>
       </div>
     </nav>
+
   );
 };
 

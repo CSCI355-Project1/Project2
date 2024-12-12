@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import CreateEvent from "./pages/CreateEvent";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/CheckOut"
 import Navbar from "./components/common/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );
