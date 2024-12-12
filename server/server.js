@@ -27,6 +27,9 @@ const createProduct = require("./endpoints/createProduct");
 const getProducts = require("./endpoints/getProducts");
 const eventsNew = require("./endpoints/eventsNew");
 const eventsGet = require("./endpoints/eventsGet");
+const getNotifications = require("./endpoints/getNotifications");
+const enrollNotifications = require("./endpoints/enrollNotifications");
+const dismissNotification = require("./endpoints/dismissNotification");
 
 app.use("/api/", helloRoute);
 // app.use("/api/users", usersRoute);
@@ -36,6 +39,9 @@ app.use("/api/products/create", createProduct);
 app.use("/api/products", getProducts);
 app.use("/api/events/new", eventsNew);
 app.use("/api/events", eventsGet);
+app.use("/api/notifications", getNotifications);
+app.use("/api/notifications/enroll", enrollNotifications);
+app.use("/api/notifications/dismiss", dismissNotification);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

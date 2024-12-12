@@ -1,4 +1,3 @@
-// src/components/marketplace/ProductsView.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "rc-slider";
@@ -9,6 +8,8 @@ const ProductsView = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 300]);
+  const [sortField, setSortField] = useState(null);
+  const [sortDirection, setSortDirection] = useState("asc");
   const [filters, setFilters] = useState({
     status: "",
     minPrice: 0,
@@ -56,6 +57,44 @@ const ProductsView = () => {
 
   const handleApplyFilters = () => {
     fetchProducts();
+  };
+
+  const handleSort = (field) => {
+    const newDirection =
+      field === sortField && sortDirection === "asc" ? "desc" : "asc";
+    setSortField(field);
+    setSortDirection(newDirection);
+  };
+
+  const getSortedProducts = () => {
+    if (!sortField) return products;
+
+    return [...products].sort((a, b) => {
+      let aValue = a[sortField];
+      let bValue = b[sortField];
+
+      if (sortField.includes("_at")) {
+        aValue = new Date(aValue).getTime();
+        bValue = new Date(bValue).getTime();
+      } else if (sortField === "price") {
+        aValue = parseFloat(aValue);
+        bValue = parseFloat(bValue);
+      } else if (typeof aValue === "string") {
+        if (aValue == null) aValue = "";
+        if (bValue == null) bValue = "";
+        aValue = aValue.toLowerCase();
+        bValue = bValue.toLowerCase();
+      }
+
+      if (aValue < bValue) return sortDirection === "asc" ? -1 : 1;
+      if (aValue > bValue) return sortDirection === "asc" ? 1 : -1;
+      return 0;
+    });
+  };
+
+  const getSortIcon = (field) => {
+    if (sortField !== field) return "";
+    return sortDirection === "asc" ? "↑" : "↓";
   };
 
   return (
@@ -108,18 +147,58 @@ const ProductsView = () => {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Sold By</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th
+                  onClick={() => handleSort("id")}
+                  style={{ cursor: "pointer" }}
+                >
+                  ID {getSortIcon("id")}
+                </th>
+                <th
+                  onClick={() => handleSort("title")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Title {getSortIcon("title")}
+                </th>
+                <th
+                  onClick={() => handleSort("description")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Description {getSortIcon("description")}
+                </th>
+                <th
+                  onClick={() => handleSort("price")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Price {getSortIcon("price")}
+                </th>
+                <th
+                  onClick={() => handleSort("status")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Status {getSortIcon("status")}
+                </th>
+                <th
+                  onClick={() => handleSort("created_by")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Sold By {getSortIcon("created_by")}
+                </th>
+                <th
+                  onClick={() => handleSort("created_at")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Created At {getSortIcon("created_at")}
+                </th>
+                <th
+                  onClick={() => handleSort("updated_at")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Updated At {getSortIcon("updated_at")}
+                </th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {getSortedProducts().map((product) => (
                 <tr key={product.id}>
                   <td>{product.id}</td>
                   <td>{product.title}</td>

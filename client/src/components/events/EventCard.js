@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/EventCard.css";
-// import calendarIcon from "../../assets/icons/calendar-icon.png";
+import LocationMap from "./LocationMap";
 
 const EventCard = ({ eventId, onClose }) => {
   const [event, setEvent] = useState(null);
   const [error, setError] = useState(null);
+  const [enrollmentStatus, setEnrollmentStatus] = useState("");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -26,6 +28,31 @@ const EventCard = ({ eventId, onClose }) => {
     fetchEventDetails();
   }, [eventId]);
 
+  const handleEnrollClick = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3005/api/notifications/enroll/${eventId}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setEnrollmentStatus("Successfully enrolled in notifications!");
+      } else {
+        setEnrollmentStatus(data.error || "Failed to enroll in notifications");
+      }
+    } catch (error) {
+      console.error("Error enrolling in notifications:", error);
+      setEnrollmentStatus("Error enrolling in notifications");
+    }
+  };
+
   if (error) return <div className="error-message">{error}</div>;
   if (!event) return <div className="loading">Loading...</div>;
 
@@ -39,7 +66,6 @@ const EventCard = ({ eventId, onClose }) => {
         <h3 className="event-card-title">{event.title}</h3>
 
         <div className="event-card-datetime">
-          {/* <img src={calendarIcon} alt="Calendar" className="card-icon" /> */}
           <span>🗓️ {new Date(event.date).toLocaleString()}</span>
         </div>
 
@@ -47,7 +73,32 @@ const EventCard = ({ eventId, onClose }) => {
           <span>📍 {event.location}</span>
         </div>
 
+        {event.location && (
+          <div className="event-map-container">
+            <LocationMap location={event.location} />
+          </div>
+        )}
+
         <p className="event-card-description">{event.description}</p>
+
+        {token && (
+          <div className="event-card-actions">
+            <button className="enroll-button" onClick={handleEnrollClick}>
+              Enroll in Notifications
+            </button>
+            {enrollmentStatus && (
+              <p
+                className={`enrollment-status ${
+                  enrollmentStatus.includes("Successfully")
+                    ? "success"
+                    : "error"
+                }`}
+              >
+                {enrollmentStatus}
+              </p>
+            )}
+          </div>
+        )}
 
         <div className="event-card-footer">
           <span className="event-creator">Created by: {event.created_by}</span>

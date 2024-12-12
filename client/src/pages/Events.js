@@ -40,6 +40,11 @@ const Events = () => {
       <div className="events-content">
         <div className="events-header">
           <NotificationsToggle />
+        </div>
+        <div
+          className="new-events"
+          style={{ marginTop: "30px", marginBottom: "30px" }}
+        >
           {token && (
             <button
               className="new-event-button"
