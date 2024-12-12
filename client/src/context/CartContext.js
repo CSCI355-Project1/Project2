@@ -41,11 +41,16 @@ export const CartProvider = ({ children }) => {
         );
     };
 
+    const clearCart = () => {
+        setCartItems([]);
+    }
+
     const value = {
         cartItems,
         addItemToCart,
         removeItemFromCart,
-        removeItemCompletely
+        removeItemCompletely,
+        clearCart,
     }
 
     return (

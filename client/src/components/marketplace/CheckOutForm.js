@@ -2,11 +2,13 @@ import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 const CheckOutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const navigate = useNavigate();
+    const { clearCart } = useCart();
 
     const [message, setMessage] = useState(null);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -33,6 +35,7 @@ const CheckOutForm = () => {
         }
         else {
             setMessage("Payment was successful!");
+            clearCart();
             navigate("/payment-success")
         }
         setIsProcessing(false);
