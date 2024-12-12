@@ -7,6 +7,14 @@ import profileIcon from "../../assets/icons/profile-icon.png";
 import cartIcon from "../../assets/icons/cart-icon.png";
 
 const Navbar = () => {
+  //   const handleClick = () => {
+  //     const token = localStorage.getItem("token"); // Retrieve the token
+  //     if (!token) {
+  //       alert("Failed to log in");
+  //     }
+  //     console.log(token);
+  //   };
+
   const { currentUser } = useAuth();
 
   const cartItemCount = 3; //REPLACE THIS LATER WITH LOGIC THIS IS A PLACEHOLDER
@@ -29,6 +37,9 @@ const Navbar = () => {
         <li>
           <Link to="/marketplace">Marketplace</Link>
         </li>
+        {/* <li>
+          <button onClick={handleClick}>test</button>
+        </li> */}
       </ul>
       <div className="navbar-actions">
         {!currentUser ? (

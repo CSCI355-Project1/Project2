@@ -1,0 +1,40 @@
+.notifications-container {
+  margin: 20px 0;
+}
+
+.notifications-toggle {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.notifications-toggle:hover {
+  background-color: #e9ecef;
+}
+
+.notifications-toggle.active {
+  background-color: #e9ecef;
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.notifications-content {
+  border: 1px solid #dee2e6;
+  border-top: none;
+  padding: 20px;
+  background-color: white;
+}
+
+.notifications-content p {
+  margin: 0;
+  color: #6c757d;
+}
