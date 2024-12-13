@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="navbar-logo">
         <Link to="/">
           <img src={logo} alt="logo" className="brand-logo" />
-          Community Connect
+          <p>Community Connect</p>
         </Link>
       </div>
       <ul className="navbar-links">
@@ -53,9 +53,9 @@ const Navbar = () => {
             <img src={profileIcon} alt="Profile" className="btn-icon" />
           </Link>
         )}
-        <Link to="/events" className="btn create-event">
+        {/* <Link to="/events" className="btn create-event">
           + Create Event
-        </Link>
+        </Link> */}
         <Link to="/cart" className="btn cart">
           <img src={cartIcon} alt="Add to Cart" className="btn-icon" />
           {totalItems > 0 && (

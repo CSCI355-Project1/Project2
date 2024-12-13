@@ -1,9 +1,16 @@
 .navbar {
-  background-color: #222;
-  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  background-color: #222;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.navbar-logo {
+  flex: 1;
 }
 
 .navbar-logo a {
@@ -23,7 +30,9 @@
 
 .navbar-links {
   display: flex;
-  gap: 15px;
+  flex: 1;
+  justify-content: center;
+  gap: 30px;
   margin: 0;
   list-style: none;
 }
@@ -43,6 +52,8 @@
 
 .navbar-actions {
   display: flex;
+  flex: 1;
+  justify-content: flex-end;
   gap: 15px;
   align-items: center;
 }
@@ -68,7 +79,12 @@
 
 .btn.profile {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #d4d4d4;
+  height: 25px;
+  width: 20px;
   border-radius: 50%;
 }
 
@@ -77,21 +93,14 @@
   color: #555;
 }
 
-.btn.create-event {
-  background-color: #007bff;
-  color: #fff;
-  border-color: #007bff;
-}
-
-.btn.create-event:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-  cursor: pointer;
-}
-
 .btn.cart {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #d4d4d4;
+  height: 21px;
+  width: 16px;
 }
 
 .btn-icon {
@@ -115,3 +124,53 @@
 .btn:active {
   transform: scale(0.95);
 }
+
+@media (max-width: 768px) {
+  .navbar-logo p {
+    font-size: 1rem;
+    display: none;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .navbar-links {
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar-links a {
+    font-size: 12px;
+  }
+
+  .btn-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .btn.profile {
+    height: 10px;
+    width: 5px;
+  }
+
+  .btn.cart {
+    height: 6px;
+    width: 1px;
+  }
+}
+
+/* .btn.create-event {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.btn.create-event:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  cursor: pointer;
+} */

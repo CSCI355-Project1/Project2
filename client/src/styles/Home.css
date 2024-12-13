@@ -82,6 +82,7 @@ h2 {
   gap: 20px;
   justify-content: center;
 }
+
 .events-grid {
   display: flex;
   gap: 2rem;
@@ -133,6 +134,7 @@ h2 {
   margin-bottom: 2rem;
   color: #333;
 }
+
 .popular-products h2 {
   text-align: center;
   margin-bottom: 2rem;
