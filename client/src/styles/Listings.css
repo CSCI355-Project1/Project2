@@ -1,0 +1,101 @@
+.listings-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.listings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.listings-table th,
+.listings-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.listings-table th {
+  background-color: #f5f5f5;
+}
+
+.remove-button {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.remove-button:hover {
+  background-color: #cc0000;
+}
+
+.no-listings {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+}
+
+.listing-form {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: #cc0000;
+  background-color: #ffe6e6;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.success-message {
+  color: #2e7d32;
+  background-color: #edf7ed;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}

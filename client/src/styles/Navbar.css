@@ -1,0 +1,176 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #222;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.navbar-logo {
+  flex: 1;
+}
+
+.navbar-logo a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.navbar-links {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: 30px;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.navbar-links a:hover {
+  background-color: #444;
+}
+
+.navbar-actions {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 15px;
+  align-items: center;
+}
+
+.navbar .btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.navbar .btn:hover {
+  background-color: #bababa;
+  border-color: #fff;
+}
+
+.btn.profile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d4d4d4;
+  height: 25px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.btn.login {
+  background-color: #d4d4d4;
+  color: #555;
+}
+
+.btn.cart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d4d4d4;
+  height: 21px;
+  width: 16px;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4136;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .navbar-logo p {
+    font-size: 1rem;
+    display: none;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .navbar-links {
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar-links a {
+    font-size: 12px;
+  }
+
+  .btn-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .btn.profile {
+    height: 10px;
+    width: 5px;
+  }
+
+  .btn.cart {
+    height: 6px;
+    width: 1px;
+  }
+}
+
+/* .btn.create-event {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.btn.create-event:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  cursor: pointer;
+} */
